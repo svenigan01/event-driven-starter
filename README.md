@@ -1,9 +1,9 @@
 > This documentation is also available in an enhanced form at
-> [Event-Driven Architecture Template](https://kamilmazurek.pl/event-driven-architecture-template) page.
+> [Event-Driven Architecture Template](https://svenigan.pl/event-driven-architecture-template) page.
 
 # Event-Driven Architecture Template
 
-[![Build](https://github.com/kamilmazurek/event-driven-architecture-template/actions/workflows/build.yml/badge.svg)](https://github.com/kamilmazurek/event-driven-architecture-template/actions/workflows/build.yml)
+[![Build](https://github.com/svenigan/event-driven-architecture-template/actions/workflows/build.yml/badge.svg)](https://github.com/svenigan/event-driven-architecture-template/actions/workflows/build.yml)
 
 This repository contains the implementation of a Java-based microservice template that follows the principles of Event-Driven Architecture (EDA).
 Built with Spring Boot and powered by Apache Kafka, the template provides a clean foundation for building scalable and resilient distributed applications, which communicate through events rather than direct service-to-service calls.
@@ -160,15 +160,15 @@ This approach promotes loose coupling, scalability, and responsiveness, making i
 
 This architecture is particularly effective for systems that must handle asynchronous workflows or high volumes of distributed interactions.
 It works well in environments where multiple services or modules need to react to changes independently, such as processing orders, updating analytics, sending notifications, or integrating with external systems.
-For example, an [ETL Architecture pipeline](https://kamilmazurek.pl/etl-template-with-flink) can transform raw data into meaningful domain events to continuously feed an event-driven ecosystem.
+For example, an [ETL Architecture pipeline](https://svenigan.pl/etl-template-with-flink) can transform raw data into meaningful domain events to continuously feed an event-driven ecosystem.
 It may also be a strong fit for systems that require high scalability and resilience.
 Additionally, by decoupling producers from consumers, teams can develop, deploy, and scale components independently, which improves flexibility and supports continuous delivery.
 
 However, an Event-Driven Architecture introduces additional complexity.
 Managing event consistency, tracing flows across services, handling failures, and ensuring reliable delivery requires careful design and tooling.
 For smaller applications, systems with simple request–response flows, or projects with tight deadlines, this added complexity may outweigh the benefits.
-In such cases, a [Hexagonal Architecture](https://kamilmazurek.pl/hexagonal-architecture-template) can provide a more straightforward and maintainable approach,
-while a [Layered Architecture](https://kamilmazurek.pl/layered-architecture-template) may be suitable if an even simpler structure is desired.
+In such cases, a [Hexagonal Architecture](https://svenigan.pl/hexagonal-architecture-template) can provide a more straightforward and maintainable approach,
+while a [Layered Architecture](https://svenigan.pl/layered-architecture-template) may be suitable if an even simpler structure is desired.
 
 Ultimately, choose Event-Driven Architecture when your system must be highly scalable, reactive, and loosely coupled.
 When implemented thoughtfully, it enables resilient, extensible systems that can evolve naturally as new consumers, integrations, and business capabilities emerge.
@@ -211,7 +211,7 @@ It balances simplicity for local development with the robustness required for re
 ## How It Works
 
 This implementation follows Event-Driven Architecture (EDA) principles, allowing services to communicate asynchronously through Apache Kafka.
-It uses the Spring Framework, where components are managed as [Spring Beans](https://kamilmazurek.pl/spring-beans-explained), supporting clean dependency management and loose coupling.
+It uses the Spring Framework, where components are managed as [Spring Beans](https://svenigan.pl/spring-beans-explained), supporting clean dependency management and loose coupling.
 
 The system is built around three main components: the Producer, Apache Kafka, and the Consumer, each with a clearly defined responsibility.
 Such a separation allows the application to scale independently, remain loosely coupled, and handle events reliably and efficiently.
@@ -769,7 +769,7 @@ Such an approach works well with the decoupled, message-driven design of Event-D
 
 ## Additional Resources
 
-* [Event-Driven Architecture Template with Java and Spring Boot](https://kamilmazurek.pl/event-driven-architecture-template)
+* [Event-Driven Architecture Template with Java and Spring Boot](https://svenigan.pl/event-driven-architecture-template)
 * [EWhat do you mean by “Event-Driven”, Martin Fowler](https://martinfowler.com/articles/201701-event-driven.html)
 * [Event-driven architecture, Wikipedia](https://en.wikipedia.org/wiki/Event-driven_architecture)
 * [Pattern: Event-driven architecture, microservices.io](https://microservices.io/patterns/data/event-driven-architecture.html)
@@ -777,12 +777,12 @@ Such an approach works well with the decoupled, message-driven design of Event-D
 
 ## Author
 
-This project was created by [Kamil Mazurek](https://kamilmazurek.pl), a Software Engineer based in Warsaw, Poland.
+This project was created by [Kamil Mazurek](https://svenigan.pl), a Software Engineer based in Warsaw, Poland.
 You can also find me on my [LinkedIn profile](https://www.linkedin.com/in/kamil-mazurek).
 
 More of my repositories can also be found on my GitHub and GitLab profiles:
-- [Kamil Mazurek on GitHub](https://github.com/kamilmazurek)
-- [Kamil Mazurek on GitLab](https://gitlab.com/kamilmazurek)
+- [Kamil Mazurek on GitHub](https://github.com/svenigan)
+- [Kamil Mazurek on GitLab](https://gitlab.com/svenigan)
 
 Thanks for visiting 🙂
 
