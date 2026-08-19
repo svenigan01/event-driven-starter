@@ -777,13 +777,10 @@ Such an approach works well with the decoupled, message-driven design of Event-D
 
 ## Author
 
-This project was created by [Kamil Mazurek](https://svenigan.pl), a Software Engineer based in Warsaw, Poland.
-You can also find me on my [LinkedIn profile](https://www.linkedin.com/in/kamil-mazurek).
-
+This project was created by svenigan, a Software Engineer. You can also find me on my LinkedIn profile.
 More of my repositories can also be found on my GitHub and GitLab profiles:
-- [Kamil Mazurek on GitHub](https://github.com/svenigan)
-- [Kamil Mazurek on GitLab](https://gitlab.com/svenigan)
-
+svenigan on GitHub
+svenigan on GitLab
 Thanks for visiting 🙂
 
 ## Disclaimer
