@@ -5,54 +5,37 @@
 
 [![Build](https://github.com/svenigan/event-driven-architecture-template/actions/workflows/build.yml/badge.svg)](https://github.com/svenigan/event-driven-architecture-template/actions/workflows/build.yml)
 
-This repository contains the implementation of a Java-based microservice template that follows the principles of Event-Driven Architecture (EDA).
-Built with Spring Boot and powered by Apache Kafka, the template provides a clean foundation for building scalable and resilient distributed applications, which communicate through events rather than direct service-to-service calls.
-With a modular structure and clear separation between domain logic, messaging infrastructure, and configuration, it serves as a reusable starting point for modern microservice ecosystems.
-Key advantages:
-* **Loose Coupling:** Services communicate through events, reducing direct dependencies and enabling independent evolution.
-* **Asynchronous Communication:** Non-blocking interactions improve responsiveness and overall system resilience.
-* **Scalability:** Producers and consumers can scale independently based on workload and traffic patterns.
-* **Resilience:** Event-driven flows help isolate failures and prevent cascading outages across services.
-* **Extensibility:** New consumers can subscribe to existing events without modifying the producing service.
-* **Event Replay and Traceability:** Kafka's log-based model enables event replay and improves observability of system behavior.
-* **Developer Productivity:** A ready-to-use structure accelerates the development of new event-driven microservices while maintaining consistency.
+This code project is event driven starter for building small, independent programs (microservices) using Java and Spring Boot. Instead of having services talk directly, it uses tool Apache Kafka so they can send and receive "event" messages (like a group chat for apps). Everything is organized cleanly into separate folders for main code, messaging, and settings making it easy starter for building large, reliable software systems.
 
-The goal is to keep the template practical, clean, and easy to adapt, providing a solid foundation for building event-driven microservices.
+Key advantages:
+**Loose Coupling:** Apps stays independent from each other.
+**Asynchronous Communication:** Programs run without waiting around.
+**Scalability:** Easily handles more user traffic.
+**Resilience:** Stops small crashes spreading everywhere.
+**Extensibility:** Simple to add new features
+**Event Replay and Traceability:** Replay and track past actions.
+
+The goal is to keep the project practical, clean, and easy to adapt, providing a solid foundation for building event-driven microservices.
 
 ## Quickstart
 
-Following steps provide a quick way to get started with the Event-Driven Architecture Template:
-1. Ensure a JDK is available to build and run the code. Temurin, based on OpenJDK and available from [adoptium.net](https://adoptium.net/), can be used for this purpose.
-2. The project uses Docker to run Kafka. It is possible to run the template without it, but using Docker is recommended to get started quickly. The following steps assume Docker is installed, so please make sure you have it before proceeding.
-3. Download the source code either by cloning the repository with Git or by downloading the ZIP file. If you downloaded the ZIP, extract it. Then navigate to the project folder.
-4. Build the application and start it using Docker Compose:
-    ```shell
-    mvnw clean package
-    docker compose up --build
-    ```
-    Rebuilds and deployments may accumulate unused data, consuming additional disk space over time.
-    Therefore, you may want to clean up Compose-managed resources and delete data volumes:    
-    ```shell
-    docker compose down -v
-    ```   
-5. Verify that the application is running by sending a POST request to the Producer service:
-    ```shell
-    curl -i -X POST http://localhost:8080/items -H "Content-Type: application/json" -d '{"name":"Item A"}'
-    ```
-6. Check the Consumer by opening:
-    ```console
-    http://localhost:8081/items
-    ```
-   The response should contain an item like:
-    ```json
-    [
-      {
-        "id": "bc0ac641-b5f0-4e99-b067-926cead738f9",
-        "name": "Item A"
-      }
-    ]
-    ```
-7. Customize the source code as needed, rebuild the project, and run the application 🚀.
+Following steps provide a quick way to get started with the Event-Driven Architecture
+
+1.Install Java (JDK):Required to run code.Download and install Java from adoptium.net.
+2.Install Docker:Easiest way to run Kafka.Make sure Docker is installed on your computer before continuing.
+3.Download the Project:Get the source files.Clone the repository with Git or download and unzip the ZIP file, then open the project folder.
+4.Build and Run:Launch the app with these commands:Shellmvnw clean package
+docker compose up --build
+(To stop it and wipe saved data later, run docker compose down -v)
+5.Send Test Data:Post a test item using your terminal:Shellcurl -i -X POST http://localhost:8080/items -H "Content-Type: application/json" -d '{"name":"Item A"}'
+6.Verify the Output:Open http://localhost:8081/items in your browser. You should see your item listed in JSON format:JSON[
+  {
+    "id": "bc0ac641-b5f0-4e99-b067-926cead738f9",
+    "name": "Item A"
+  }
+]
+7.Make It Yours:Edit the code, rebuild, and start creating your own features! 🚀
+
 
 ## Table of Contents
 * [Why this template?](#why-this-template)
