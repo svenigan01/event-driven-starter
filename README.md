@@ -22,23 +22,32 @@ The goal is to keep the project practical, clean, and easy to adapt, providing a
 Following steps provide a quick way to get started with the Event-Driven Architecture
 
 1.Install Java (JDK):Required to run code.Download and install Java from adoptium.net.
+
 2.Install Docker:Easiest way to run Kafka.Make sure Docker is installed on your computer before continuing.
+
 3.Download the Project:Get the source files.Clone the repository with Git or download and unzip the ZIP file, then open the project folder.
+
 4.Build and Run:Launch the app with these commands:Shellmvnw clean package
 docker compose up --build
 (To stop it and wipe saved data later, run docker compose down -v)
-5.Send Test Data:Post a test item using your terminal:Shellcurl -i -X POST http://localhost:8080/items -H "Content-Type: application/json" -d '{"name":"Item A"}'
-6.Verify the Output:Open http://localhost:8081/items in your browser. You should see your item listed in JSON format:JSON[
+
+5.Send Test Data:Post a test item using your terminal:
+Shell
+`curl -i -X POST http://localhost:8080/items -H "Content-Type: application/json" -d '{"name":"Item A"}'`
+
+6.Verify the Output:Open http://localhost:8081/items in your browser. You should see your item listed in 
+JSON format:
+`JSON[
   {
     "id": "bc0ac641-b5f0-4e99-b067-926cead738f9",
     "name": "Item A"
   }
-]
+]`
+
 7.Make It Yours:Edit the code, rebuild, and start creating your own features! 🚀
 
 
 ## Table of Contents
-* [Why this template?](#why-this-template)
 * [Architecture Overview](#architecture-overview)
 * [Apache Kafka as the Event Backbone](#apache-kafka-as-the-event-backbone)
 * [When to Use Event-Driven Architecture](#when-to-use-event-driven-architecture) 
@@ -52,57 +61,32 @@ docker compose up --build
 * [Author](#author)
 * [Disclaimer](#disclaimer)
 
-## Why this template?
-
-My main motivation for creating this project was to have a reusable implementation of microservices based on Event-Driven Architecture.
-Starting a new project often involves repeatedly setting up the same project structure, configuration, messaging infrastructure, and tooling.
-This template reduces that overhead by providing a solid foundation for building event-driven services.
-
-To accelerate development while maintaining quality standards, the template is configured with:
-
-* **Spring Boot 3**
-* **Docker support**
-* **Kafka support**
-* **Integration tests**
-* **Unit tests**
-* **Allure reports**
-* **Actuator endpoints**
-
-It reduces repetitive setup by providing a ready-to-use project structure, allowing developers to focus on business requirements.
-
 ## Architecture Overview
 
-Event-Driven Architecture (EDA) is a software design pattern in which components communicate asynchronously by producing and consuming events, rather than invoking each other directly.
-This approach allows services to operate independently, promotes loose coupling, improves scalability, and makes it easier to extend or modify individual components without impacting the rest of the system.
-EDA is particularly well-suited for distributed microservices, where responsiveness, resilience, and flexibility are critical.
+Event-Driven Architecture (EDA) is a way to design software where apps talk by sending "event" messages instead of calling each other directly. Think of it like a group chat: one app drops an update when something happens, and other apps react whenever they are ready.
+This is independent, flexibile(easy to add features), and highly scalable(handles load surges)
+
+Starting a new project from scratch usually means repeating the exact same basic structure, tools, and message settings every single time.
+
+This template gives you a ready-to-use starting line. It comes pre-loaded with everything you need—like Spring Boot, Kafka, Docker, built-in testing tools, and system monitors—so you can skip the tedious setup and jump straight into coding your app's actual features.
 
 In this implementation, the architecture is centered around Kafka as the communication backbone.
 The image below illustrates the concept used in this project:
 
 ![Concept diagram](readme-images/event-driven-architecture-template-concept-diagram.png)
 
-The main parts of this template include:
-* **Producer**
-    * Publishes domain events to Kafka topic when business actions occur.
-    * Converts internal domain changes into events that other services can consume.
-* **Consumer**
-    * Subscribes to the Kafka topic and processes events asynchronously.
-    * Encapsulates business logic triggered by incoming events while remaining decoupled from the producer.
-* **Model**
-    * Defines the event payloads and domain objects shared between producer and consumer.
-    * Ensures consistent data structure and serialization across services.
-* **Broker (Apache Kafka)**
-    * Serves as the messaging backbone and distributed event log, storing events as an ordered sequence.
-    * Provides partitioned storage with configurable durability (e.g., replication, acknowledgments).
-    * Enables event replay, retention policies, and scalable consumption by multiple consumers.
-    * Supports decoupled communication between producers and consumers.
-* **Supporting Components**
-    * Spring Boot Actuator for health checks.
+The main parts include:
+* Producer: Sends "event" messages whenever an action happens in the app.
 
-This template focuses on simplicity and clarity, providing a solid starting point for building event-driven microservices.
-While it currently supports a single producer and consumer, the structure is designed to be easily extended with additional services, topics, or event flows as your system grows.
+* Consumer: Listens for those messages and takes action when one arrives.
 
-By following Event-Driven Architecture principles, the design ensures asynchronous communication, loose coupling, and clear separation of concerns, helping developers create scalable, resilient, and maintainable microservices.
+* Model: Defines the standard format for the message data so both sides understand it.
+
+* Broker (Apache Kafka): The digital post office that safely holds and delivers all the messages.
+
+* Health Monitors: Basic tools that check if the app is running smoothly.
+
+This project starts small with just one sender and one receiver, but it is built so you can easily add more services as your app grows.
 
 ## Apache Kafka as the Event Backbone
 
